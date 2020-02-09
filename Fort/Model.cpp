@@ -13,11 +13,11 @@ void Model::initialize(std::vector<float> vertices, std::vector<float> normals, 
 
 //Prints object's data counts
 void Model::printDetails()
-{
+{	  
 	std::cout << "List ID: " << listId << std::endl;
 	std::cout << "Vertices Count: " << vertices.size()<<std::endl;
 	std::cout << "faces Count: " << faces.size() << std::endl;
-	std::cout << "Normals Count: " << normals.size() << std::endl;
+	std::cout << "Normals Count: " << normals.size() << std::endl << std::endl;
 }
 
 //Set Materials
@@ -41,12 +41,12 @@ void Model::genarateList()
 {
 	glNewList(listId, GL_COMPILE);
 	glPushMatrix();
-	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-	glColor3f(diffuse[0], diffuse[1], diffuse[2]);
-	glColorMaterial(GL_FRONT,GL_SPECULAR);
-	glColor3f(specular[0], specular[1], specular[2]);
-	glColorMaterial(GL_FRONT, GL_SHININESS);
-	glColor3f(shininess[0], shininess[1], shininess[2]);
+	//glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	//glColor3f(diffuse[0], diffuse[1], diffuse[2]);
+	//glColorMaterial(GL_FRONT,GL_SPECULAR);
+	//glColor3f(specular[0], specular[1], specular[2]);
+	//glColorMaterial(GL_FRONT, GL_SHININESS);
+	//glColor3f(shininess[0], shininess[1], shininess[2]);
 
 	
 

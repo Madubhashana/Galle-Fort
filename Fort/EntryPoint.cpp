@@ -6,6 +6,7 @@ CS 308 | Computer Graphics | Group Project
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include <math.h>
 #include "GL\glut.h"
 #include "Primitives.h"
@@ -50,17 +51,35 @@ Model *monument;
 Model *court;
 Model *entrance;
 
+//std::vector<Model *> models;
+std::map < std::string, Model* > models;
 
 #pragma endregion
 
 #pragma region Initializing
+
+//Insert all the models to this map
+void initModelsList()
+{
+	//models.insert({"clockTower", clockTower	});
+	models.insert({"testModel", testModel});
+	models.insert({"church", church	});
+	models.insert({"clockTower", clockTower});
+	models.insert({"directionSign", directionSign});
+	models.insert({"dutchHospital", dutchHospital});
+	models.insert({"lampPost", lampPost});
+	models.insert({"lightHouse", lightHouse});
+	models.insert({"monument", monument});
+	models.insert({"court", court});
+	models.insert({"entrance", entrance});
+}
+
 void initModels()
 {
 	ModelLoader loader;
 	testModel = loader.loadModel("church");
-	//testModel->setDiffuse(.1f, .1f, .1f);
+	testModel->setDiffuse(.1f, .1f, .1f);
 	testModel->transform.setScale(.5f);
-
 	church = loader.loadModel("church");
 	clockTower = loader.loadModel("clocktower");
 	directionSign = loader.loadModel("DirectionSign");
@@ -72,8 +91,21 @@ void initModels()
 	
 	entrance = loader.loadModel("entrance.obj");
 	entrance->setDiffuse(.5f, .5f, .5f);
+	initModelsList();
+	std::map<std::string, Model*>::iterator it = models.begin();
+
+	while (it != models.end())
+	{
+		//it->second = loader.loadModel(it->first);
+		it->second->listId = glGenLists(1);
+		it->second->genarateList();
+		it->second->printDetails();
+		it++;
+	}
+
 
 }
+
 void initLighting(){
 	glEnable(GL_LIGHTING);
 	glShadeModel(GL_SMOOTH);
@@ -225,7 +257,7 @@ void renderScene(){
 			glTranslated(-0.18, 0.0, -13.79);
 			glRotated(5, 0.0, 1.0, 0.0);
 			glScaled(0.033, 0.0328, 0.0329);
-			entrance->render();
+			//entrance->render();
 		glPopMatrix();
 
 		//clock tower
@@ -233,27 +265,27 @@ void renderScene(){
 			glTranslated(22.1, 2.37, -14.4);
 			glScaled(1.3, 1.0, 1.3);
 			glRotated(5, 0.0, 1.0, 0.0);
-			clockTower->render();
+			clockTower->draw();
 		glPopMatrix();
 
 		//Light house
 		glPushMatrix();
 			glTranslated(-88.2, 1.9, -148);
-			lightHouse->render();
+			lightHouse->draw();
 		glPopMatrix();
 
 		//Monument
 		glPushMatrix();
 			glTranslated(-0.4, -0.001, -2.1);
 			glScaled(0.4, 0.4 , 0.4);
-			monument->render();
+			monument->draw();
 		glPopMatrix();
 
 		//RoadSign
 		glPushMatrix();
 			glTranslated(-1.7, 0.0, -27.8);
 			glScaled(0.4, 0.4, 0.4);
-			directionSign->render();
+			directionSign->draw();
 		glPopMatrix();
 
 		//Court
@@ -261,7 +293,7 @@ void renderScene(){
 			glTranslated(-83.94, 0.0, -70.1);
 			glRotated(98, 0.0, 1.0, 0.0);
 			glScaled(0.5, 0.5, 0.5);
-			court->render();
+			court->draw();
 		glPopMatrix();
 
 		//DutchHospital
@@ -269,11 +301,11 @@ void renderScene(){
 			glTranslated(-86.04+adX, 0.0, -101.2+adZ);
 			glRotated(94.0, 0.0, -1.0, 0.0);
 			glScaled(0.7, 0.7, 0.7);
-			dutchHospital->render();
+			dutchHospital->draw();
 		glPopMatrix();
 
 		glPushMatrix();
-			//clockTower->render();
+			//clockTower->draw();
 		glPopMatrix();
 
 	glPopMatrix();
@@ -462,8 +494,10 @@ int main(int argc, char* argv[])
 		glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
 		glutInitWindowSize(1280, 760);
 		glutCreateWindow("Practise Two");
+		
+	//	initModelsList();
 		init();
-	
+
 		glutDisplayFunc(renderScene);
 		glutIdleFunc(renderScene);
 		glutReshapeFunc(reshape);

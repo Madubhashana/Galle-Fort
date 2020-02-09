@@ -9,6 +9,8 @@ Model* ModelLoader::loadModel(std::string path)
 	std::string fullPath = "Assets\\" + path;
 	std::ifstream inputFile(fullPath);
 
+	std::cout << "Loading... " << path;
+
 	if (inputFile.is_open())
 	{
 		while (std::getline(inputFile, line, '\n'))
@@ -85,10 +87,14 @@ Model* ModelLoader::loadModel(std::string path)
 				}
 			}
 		}
+
+	std::cout << "\t Loaded" << std::endl;
 	}
 	else
 	{
-		std::cout << "Error Loading File";
+		std::cout << "\t Error Loading File"<<std::endl;
 	}
+
+
 	return model;
 }
