@@ -50,6 +50,8 @@ Model *lightHouse;
 Model *monument;
 Model *court;
 Model *entrance;
+Model *library;
+Model *pagoda;
 
 //std::vector<Model *> models;
 std::map < std::string, Model* > models;
@@ -62,7 +64,7 @@ std::map < std::string, Model* > models;
 void initModelsList()
 {
 	//models.insert({"clockTower", clockTower	});
-	models.insert({"testModel", testModel});
+	//models.insert({"testModel", testModel});
 	models.insert({"church", church	});
 	models.insert({"clockTower", clockTower});
 	models.insert({"directionSign", directionSign});
@@ -71,15 +73,17 @@ void initModelsList()
 	models.insert({"lightHouse", lightHouse});
 	models.insert({"monument", monument});
 	models.insert({"court", court});
-	models.insert({"entrance", entrance});
+	models.insert({ "entrance", entrance });
+	models.insert({ "library", library });
+	models.insert({ "pagoda", pagoda });
 }
 
 void initModels()
 {
 	ModelLoader loader;
-	testModel = loader.loadModel("church");
-	testModel->setDiffuse(.1f, .1f, .1f);
-	testModel->transform.setScale(.5f);
+	//testModel = loader.loadModel("church");
+	//testModel->setDiffuse(.1f, .1f, .1f);
+	//testModel->transform.setScale(.5f);
 	church = loader.loadModel("church");
 	clockTower = loader.loadModel("clocktower");
 	directionSign = loader.loadModel("DirectionSign");
@@ -88,9 +92,13 @@ void initModels()
 	lightHouse = loader.loadModel("LightHouse");
 	monument = loader.loadModel("Monument");
 	court = loader.loadModel("court.obj");
+	library = loader.loadModel("library.obj");
+	pagoda = loader.loadModel("pagoda.obj");
 	
 	entrance = loader.loadModel("entrance.obj");
 	entrance->setDiffuse(.5f, .5f, .5f);
+
+
 	initModelsList();
 	std::map<std::string, Model*>::iterator it = models.begin();
 
@@ -128,7 +136,7 @@ void initLighting(){
 	glEnable(GL_LIGHT0);
 }
 void init(){
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.0, 0.0, 0.0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glEnable(GL_DEPTH_TEST);
@@ -197,12 +205,12 @@ void roads(){
 	glPushMatrix();
 		glTranslated(1.0, 0.0, 0.0);
 		glRotated(5.0, 0.0, 1.0, 0.0);
-		straightRoad(0, -4.0, -21, 2.3);
+		straightRoad(0, -4.0, -49, 2.3);
 	glPopMatrix();
 
 	//R2
 	glPushMatrix();
-		glTranslated(-3.8, 0.0, -42.1);
+		glTranslated(-3.8, -0.0001, -42.1);
 		glRotated(91, 0.0, -1.0, 0.0);
 		turnRoad(13.5, 2.3, 54);
 		
@@ -210,17 +218,109 @@ void roads(){
 		glRotated(62.0, 0.0, -1.0, 0.0);
 		straightRoad(0, 0, 48, 2.3);
 
-		glTranslated(0.0, 0.0, 47.8);
+		glTranslated(0.0, 0.0015, 47.8);
 		glRotated(7, 0.0, -1.0, 0.0);
 		straightRoad(0, 0, 77, 2.3);
+	//R10
+		glTranslated(25.3, -0.0015, 2.4);
+		glRotated(10.0, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 77, 2.0);
+	//R11
+		glTranslated(-0.7, -0.001, 21.8);
+		glRotated(88.0, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 21, 2.0);
+	//R8
+		glTranslated(20.7, 0.0, -12.4);
+		glRotated(4.0, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 80, 2.0);
+	//R9
+		glTranslated(16.7 , 0.0, 12.7);
+		glRotated(7.0, 0.0, 1.0, 0.0);
+		straightRoad(0, 0, 44, 2.0);
 	glPopMatrix();
 
 	//R3
 	glPushMatrix();
-		glTranslated(-76.34, 0.0, -68.5);
+		glTranslated(-76.34, 0.0012, -68.5);
 		glRotated(105, 0.0, 1.0, 0.0);
 		straightRoad(0, 0, 38, 2.3);
 
+		glTranslated(3.45, 0.0, 0.0);
+		glRotated(180, 0.0, 1.0, 0.0);
+		turnRoad(2.3, 2.3, 93);
+
+		glTranslated(-0.6, 0.0, 3.4);
+		glRotated(103, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 36, 2.3);
+
+		glTranslated(0.0 , 0.0, 35.8 );
+		glRotated(4.0, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 36, 2.3);
+
+		glTranslated(-2.75, 0.0, 36 );
+		turnRoad(1.6, 2.3, 68);
+	//R4
+		glTranslated(0.9, 0.0012, 2.6);
+		glRotated(74, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 37, 2.3);
+
+		glTranslated(-11.75, 0.0, 36.6);
+		turnRoad(10.6, 2.3, 55);
+
+		glTranslated(5.805, 0.0, 10.2);
+		glRotated(61, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 70, 2.3);
+
+		glTranslated(-9.45, 0.0, 70);
+		turnRoad(8.3, 2.3, 23.5);
+
+		glTranslated(8.55, 0.0, 4.0);
+		glRotated(26.0, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 42, 2.3);
+
+		glTranslated(-2.75, 0.0, 42.0);
+		turnRoad(1.6, 2.3, 57.5);
+	//R5
+		glTranslated(1.5, 0.0, 2.3);
+		glRotated(61, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 11, 2.3);
+
+		glTranslated(1.15, 0.0, 11.0);
+		glRotated(88, 0.0, -1.0, 0.0);
+		turnRoad(0.0, 2.3, 90.0);
+
+		glTranslated(1.15, 0.0, -6.0);
+		straightRoad(0, 0, 6, 2.3);
+
+		glTranslated(7.65, 0.0, 0.0);
+		glRotated(180.0, 0.0, 1.0, 0.0);
+		turnRoad(6.5, 2.3, 133);
+
+		glTranslated(-6.5, -0.001, 4.0);
+		glRotated(139.0, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 20, 2.3);
+
+		glTranslated(1.15, 0.0, -0.2);
+		glRotated(202.0, 0.0, 1.0, 0.0);
+		turnRoad(0.0, 2.3, 40.3);
+	glPopMatrix();
+
+	//R6
+	glPushMatrix();
+		glTranslated(6.2, 0.0, -31.7);
+		glRotated(114, 0.0, 1.0, 0.0);
+		turnRoad(21.0, 2.0, 62.5);
+
+		glTranslated(22.1, -0.001, -1.0);
+		glRotated(177 , 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 18, 2.0);
+
+		glTranslated(-45, 0.0, -7.5);
+		straightRoad(0, 0, 25, 2.0);
+	//R7
+		glTranslated(44.9, 0.001, 7.2);
+		glRotated(100, 0.0, -1.0, 0.0);
+		straightRoad(0, 0, 107, 2.0);
 	glPopMatrix();
 }
 
@@ -257,7 +357,7 @@ void renderScene(){
 			glTranslated(-0.18, 0.0, -13.79);
 			glRotated(5, 0.0, 1.0, 0.0);
 			glScaled(0.033, 0.0328, 0.0329);
-			//entrance->render();
+			entrance->render();
 		glPopMatrix();
 
 		//clock tower
@@ -298,15 +398,37 @@ void renderScene(){
 
 		//DutchHospital
 		glPushMatrix();
-			glTranslated(-86.04+adX, 0.0, -101.2+adZ);
-			glRotated(94.0, 0.0, -1.0, 0.0);
-			glScaled(0.7, 0.7, 0.7);
+			glTranslated(-85.64, 0.0, -104);
+			glRotated(91.4, 0.0, -1.0, 0.0);
+			glScaled(0.8, 0.8, 0.8);
 			dutchHospital->draw();
 		glPopMatrix();
 
+		//Church
 		glPushMatrix();
-			//clockTower->draw();
+			glTranslated(-37.34, 0.0, -92.4 );
+			glRotated(73.4, 0.0, -1.0, 0.0);
+			glScaled(0.7, 0.7, 0.7);
+			church->draw();
 		glPopMatrix();
+
+		//Library
+		glPushMatrix();
+			glTranslated(-35.24, 0.001, -76.5);
+			glRotated(64, 0.0, -1.0, 0.0);
+			glScaled(0.3, 0.3, 0.3);
+			library->draw();
+		glPopMatrix();
+
+		
+		//Pagoda
+		glPushMatrix();
+			glTranslated(19.0, 1.8, -80.6);
+			glRotated(0.8, 0.0, 0.0, 1.0);
+			glScaled(6.0, 6.0, 6.0);
+			pagoda->draw();
+		glPopMatrix();
+		
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -416,12 +538,12 @@ void keyboard(unsigned char key, int x, int y) {
 
 	}
 	if (key == 'y'){
-		adY += 0.1;
+		adY += 1.0;
 		printf("adY : %f\n", adY);
 
 	}
 	if (key == 'h'){
-		adY -= 0.1;
+		adY -= 1.0;
 		printf("adY : %f\n", adY);
 
 	}
