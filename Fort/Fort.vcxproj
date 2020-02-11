@@ -89,6 +89,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="Primitives.cpp" />
+    <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="stb_image\stb_im.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
@@ -100,6 +101,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SOIL\SOIL.h" />
+    <ClInclude Include="StartMenu.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
