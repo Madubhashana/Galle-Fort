@@ -56,7 +56,7 @@ void keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'p')
 	{
-		std::cout << "Please Wait"<<std::endl;
+		std::cout << "Please Wait" << std::endl;
 		toggleScene();
 	}
 
@@ -65,12 +65,12 @@ void keyboard(unsigned char key, int x, int y)
 
 void mouseMovement(int x, int y)
 {
-	currentScene->mouseMovement(x,y);
+	currentScene->mouseMovement(x, y);
 }
 
 void keyboardSpecial(int key, int x, int y)
 {
-	currentScene->keyboardSpecial(key,x,y);
+	currentScene->keyboardSpecial(key, x, y);
 }
 
 void renderScene(){
@@ -109,22 +109,22 @@ void Timer(int x){
 
 int main(int argc, char* argv[])
 {
-		glutInit(&argc, argv);
-		glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
-		glutInitWindowSize(1280/2, 760/2);
-		glutInitWindowPosition(300, 200);
-		glutCreateWindow("Galle Fort");
-		
-		init();
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
+	glutInitWindowSize(1280 / 2, 760 / 2);
+	glutInitWindowPosition(300, 200);
+	glutCreateWindow("Galle Fort");
 
-		glutDisplayFunc(renderScene);
-		glutIdleFunc(renderScene);
-		glutReshapeFunc(reshape);
-		glutTimerFunc(60.0, Timer, 1);
-	
-		glutKeyboardFunc(keyboard);
-		glutSpecialFunc(keyboardSpecial);
-		glutPassiveMotionFunc(mouseMovement);
-	
-		glutMainLoop();
+	init();
+
+	glutDisplayFunc(renderScene);
+	glutIdleFunc(renderScene);
+	glutReshapeFunc(reshape);
+	glutTimerFunc(60.0, Timer, 1);
+
+	glutKeyboardFunc(keyboard);
+	glutSpecialFunc(keyboardSpecial);
+	glutPassiveMotionFunc(mouseMovement);
+
+	glutMainLoop();
 }

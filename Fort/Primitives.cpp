@@ -310,11 +310,11 @@ void ground_levels(){
 	glTranslated(9.3, 3.0, -6.1);
 	glScaled(0.6, 0.0, 0.6);
 	glBegin(GL_POLYGON);
-	glVertex3f(32.31, 1.9, -15.66);
+	glVertex3f(32.31, 1.9, -15.46);
 	glVertex3f(32.98, 1.9, -8.02);
 	glVertex3f(23.079877, 1.9, 1.870259);
 	glVertex3f(13.2, 1.9, -8.02);
-	glVertex3f(12.67, 1.9, -13.95);
+	glVertex3f(12.67, 1.9, -13.75);
 	glEnd();
 	glPopMatrix();
 
@@ -710,13 +710,19 @@ void castsel(){
 
 	//small front
 	glPushMatrix();
-	glScaled(0.6, 0.8, 0.6);
-	glTranslated(15.5, 2.37, -10.0);
-	glPushMatrix();
-	glPushMatrix();
-	glTranslated(12.93, 0.0, -11.0);
-	glRotated(-85, 0.0, 1.0, 0.0);
-	Wall(2.5, 6.0);
+		glScaled(0.6, 0.8, 0.6);
+		glTranslated(15.5, 2.37, -10.0);
+		glPushMatrix();
+		glPushMatrix();
+
+		glTranslated(12.93, 0.0, -11.0);
+		glRotated(-85, 0.0, 1.0, 0.0);
+		Wall(2.5, 6.0);
+
+		glTranslated(-3.0, 0.0, -9.85);
+		glRotated(90, 0.0, 1.0, 0.0);
+		Wall(2.5, 19.73);
+
 	glPopMatrix();
 
 	//7
