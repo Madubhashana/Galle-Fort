@@ -41,6 +41,8 @@ private:
 	Model *monument;
 	Model *court;
 	Model *entrance;
+	Model *pagoda;
+	Model *library;
 
 	GLfloat moveX = 0.0f;
 	GLfloat moveY = 0.0f;
