@@ -15,6 +15,9 @@ CS 308 | Computer Graphics | Group Project
 GLfloat windowW = 20.0f;
 GLfloat windowH = 20.0f;
 
+bool paused = false;
+
+
 MainScreen* mainScreen;
 //= new MainScreen();
 StartMenu* startMenu = new StartMenu();
@@ -59,7 +62,10 @@ void keyboard(unsigned char key, int x, int y)
 		std::cout << "Please Wait" << std::endl;
 		toggleScene();
 	}
-
+	if (key == 'o')
+	{
+		paused = true;
+	}
 	currentScene->keyboard(key, x, y);
 }
 
@@ -101,8 +107,10 @@ void changesize(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 }
 void Timer(int x){
-
-	glutPostRedisplay();
+	if (!paused)
+	{
+	}
+		//glutPostRedisplay();
 	glutTimerFunc(60, Timer, 1);
 }
 #pragma endregion
