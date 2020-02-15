@@ -28,21 +28,38 @@ void MainScreen::initModels()
 	ModelLoader loader;
 	testModel = loader.loadModel("church");
 	testModel->transform.setScale(.5f);
+
 	church = loader.loadModel("church");
-	
+	church->setDiffuse(0.138,0.138,0.138);
+
 	clockTower = loader.loadModel("clocktower");
 	clockTower->setDiffuse(.230, .55, .64);
 	//clockTower->setSpecularB(223, 159, 159);
 	//clockTower->setShininessB(0.0, 0.0, 1.0);
 	
 	directionSign = loader.loadModel("DirectionSign");
+	directionSign->setDiffuse(0.073,0.098,0.138);
+
 	dutchHospital = loader.loadModel("dutchHospital");
+	dutchHospital->setDiffuse(0.138,0.127,0.098);
+
 	lampPost = loader.loadModel("lampPost");
+	lampPost->setDiffuse(0.175,0.018,0.013);
+
 	lightHouse = loader.loadModel("LightHouse");
+	lightHouse->setDiffuse(0.400,0.398,0.388);
+
 	monument = loader.loadModel("Monument");
+	//monument->setDiffuse();
+
 	court = loader.loadModel("court.obj");
+	//court->setDiffuse();
+
 	library = loader.loadModel("library.obj");
+	//library->setDiffuse();
+
 	pagoda = loader.loadModel("pagoda.obj");
+	//pagoda->setDiffuse();
 
 	entrance = loader.loadModel("entrance.obj");
 	entrance->setDiffuse(.5f, .5f, .5f);
@@ -66,8 +83,8 @@ void MainScreen::initLighting(){
 	glEnable(GL_LIGHTING);
 	glShadeModel(GL_SMOOTH);
 
-	GLfloat ambient[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat diffuse[] = { 0.7, 0.7, 0.7, 1.0 };
+	GLfloat ambient[] = { .724, 0.678, 0.392, 1.0 };
+	GLfloat diffuse[] = { 0.9, 0.9, 0.9, 1.0 };
 	GLfloat position[] = { 30, 0, -20, 1.0 };
 	GLfloat specular[] = { 0.5, 0.5, 0.5, 1.0 };
 
@@ -75,13 +92,25 @@ void MainScreen::initLighting(){
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 
-	glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
-	glMateriali(GL_FRONT, GL_SHININESS, 50);
+	GLfloat ambient2[] = { .20, 0.20, 0.20, 1.0 };
+	GLfloat diffuse2[] = { 0.048, 0.215, 0.575, 1.0 };
+	GLfloat position2[] = { -30, 0, -20, 1.0 };
+	GLfloat specular2[] = { 0.5, 0.5, 0.5, 1.0 };
+
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambient2);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse2);
+	glLightfv(GL_LIGHT1, GL_POSITION, position2);
+
+	//
+	//glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+	//glMateriali(GL_FRONT, GL_SHININESS, 50);
 
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+
 }
 void MainScreen::init(){
 	glClearColor(0.1f, 0.15f, 1.0f, 1.0f);
@@ -439,11 +468,11 @@ void MainScreen::render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	
-	GLfloat fog_color[] = { 0.5f, 0.5f, 0.5f, 1 };
+	GLfloat fog_color[] = { 0.5f, 0.5, 0.5f, 0.2 };
 	glFogfv(GL_FOG_COLOR, fog_color);
 	glFogi(GL_FOG_MODE, GL_LINEAR);
-	glFogf(GL_FOG_START, -30.0f);
-	glFogf(GL_FOG_END, -150.f);
+	glFogf(GL_FOG_START, -150.0f);
+	glFogf(GL_FOG_END, -5000.f);
 
 
 	camera();

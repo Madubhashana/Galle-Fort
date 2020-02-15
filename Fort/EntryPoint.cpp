@@ -18,15 +18,18 @@ GLfloat windowH = 20.0f;
 bool paused = false;
 
 
-MainScreen* mainScreen;
+MainScreen* mainScreen = new MainScreen();
 //= new MainScreen();
 StartMenu* startMenu = new StartMenu();
 Scene *currentScene;
 
 void init()
 {
-	startMenu->init();
-	currentScene = startMenu;
+	//startMenu->init();
+	//currentScene = startMenu;
+	mainScreen->init();
+	currentScene = mainScreen;
+
 }
 
 void toggleScene()
