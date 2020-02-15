@@ -46,7 +46,7 @@ void toggleScene()
 	{
 		if (mainScreen == NULL)
 		{
-			std::cout << "Starting...";
+			std::cout << "Starting..."<<std::endl;
 			mainScreen = new MainScreen();
 			mainScreen->init();
 		}
@@ -77,6 +77,7 @@ void mouseMovement(int x, int y)
 void keyboardSpecial(int key, int x, int y)
 {
 	currentScene->keyboardSpecial(key, x, y);
+
 }
 
 void renderScene(){
@@ -107,10 +108,6 @@ void changesize(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 }
 void Timer(int x){
-	if (!paused)
-	{
-	}
-		//glutPostRedisplay();
 	glutTimerFunc(60, Timer, 1);
 }
 #pragma endregion
@@ -126,7 +123,6 @@ int main(int argc, char* argv[])
 	init();
 
 	glutDisplayFunc(renderScene);
-	glutIdleFunc(renderScene);
 	glutReshapeFunc(reshape);
 	glutTimerFunc(60.0, Timer, 1);
 

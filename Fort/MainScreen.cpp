@@ -27,10 +27,14 @@ void MainScreen::initModels()
 {
 	ModelLoader loader;
 	testModel = loader.loadModel("church");
-	testModel->setDiffuse(.1f, .1f, .1f);
 	testModel->transform.setScale(.5f);
 	church = loader.loadModel("church");
+	
 	clockTower = loader.loadModel("clocktower");
+	clockTower->setDiffuse(.230, .55, .64);
+	//clockTower->setSpecularB(223, 159, 159);
+	//clockTower->setShininessB(0.0, 0.0, 1.0);
+	
 	directionSign = loader.loadModel("DirectionSign");
 	dutchHospital = loader.loadModel("dutchHospital");
 	lampPost = loader.loadModel("lampPost");
@@ -43,8 +47,9 @@ void MainScreen::initModels()
 	entrance = loader.loadModel("entrance.obj");
 	entrance->setDiffuse(.5f, .5f, .5f);
 	initModelsList();
+	
+	
 	std::map<std::string, Model*>::iterator it = models.begin();
-
 	while (it != models.end())
 	{
 		//it->second = loader.loadModel(it->first);
@@ -83,10 +88,13 @@ void MainScreen::init(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_FOG);
+
 
 	glLoadIdentity();
 	initLighting();
 	initModels();
+	setInitState();
 }
 #pragma endregion
 
@@ -387,6 +395,9 @@ void MainScreen::keyboard(unsigned char key, int x, int y) {
 	{
 		exit(0);
 	}
+
+	glutPostRedisplay();
+
 }
 void MainScreen::mouseMovement(int x, int y) {
 	int diffx = x - lastx;
@@ -395,6 +406,7 @@ void MainScreen::mouseMovement(int x, int y) {
 	lasty = y;
 	rotX += (float)diffy;
 	rotY += (float)diffx;
+	glutPostRedisplay();
 }
 void MainScreen::keyboardSpecial(int key, int x, int y){
 	if (key == GLUT_KEY_UP){
@@ -426,6 +438,14 @@ void MainScreen::initialize()
 void MainScreen::render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	
+	GLfloat fog_color[] = { 0.5f, 0.5f, 0.5f, 1 };
+	glFogfv(GL_FOG_COLOR, fog_color);
+	glFogi(GL_FOG_MODE, GL_LINEAR);
+	glFogf(GL_FOG_START, -30.0f);
+	glFogf(GL_FOG_END, -150.f);
+
+
 	camera();
 
 	glPushMatrix();

@@ -36,6 +36,10 @@ public:
 	void setSpecular(float r, float g, float b);
 	void setShininess(float r, float g, float b);
 
+	void setDiffuseB(int r, int, int b);
+	void setSpecularB(GLubyte r, GLubyte g, GLubyte b);
+	void setShininessB(GLubyte r, GLubyte g, GLubyte b);
+
 	void genarateList();
 	
 	void render();

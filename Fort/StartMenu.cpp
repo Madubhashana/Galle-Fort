@@ -25,6 +25,7 @@ void StartMenu::init(){
 
 	ModelLoader ml;
 	title = ml.loadModel("txtgalle");
+	title->setDiffuse(0.0,0.0,1.0);
 	title->listId = glGenLists(1);
 	title->genarateList();
 
@@ -40,7 +41,8 @@ void StartMenu::init(){
 
 	glLoadIdentity();
 	initLighting();
-	
+
+	setInitState();
 }
 #pragma endregion
 
@@ -87,3 +89,14 @@ void StartMenu::render(){
 void StartMenu::keyDown(unsigned char key){
 
 }
+
+//void ChangeScene(Scene& activeScene, Scene& newScene)
+//{
+//	if (!newScene.getInitState)
+//	{
+//		newScene.initialize();
+//	}
+//
+//	activeScene = newScene;
+//}
+//
