@@ -21,18 +21,34 @@ void Model::printDetails()
 }
 
 //Set Materials
+//Floats
 void Model::setDiffuse(float r, float g, float b)
 {
-	Model::diffuse[0] = r;	 Model::diffuse[1] = g;   Model::diffuse[2] = b;
+	diffuse[0] = r;	 diffuse[1] = g;   diffuse[2] = b;
 }
 void Model::setSpecular(float r, float g, float b)
 {
-	Model::specular[0] = r;	 Model::specular[1] = g;  Model::specular[2] = b;
+	specular[0] = r;	 specular[1] = g;  specular[2] = b;
 }
 void Model::setShininess(float r, float g, float b)
 {
-	Model::shininess[0] = r; Model::shininess[1] = g; Model::shininess[2] = b;
+	shininess[0] = r; shininess[1] = g; shininess[2] = b;
 }
+
+//Bytes
+void Model::setDiffuseB(int r, int g, int b)
+{
+	diffuse[0] = r / 255;	 diffuse[1] = g / 255;   diffuse[2] = b / 255;
+}
+void Model::setSpecularB(GLubyte r, GLubyte g, GLubyte b)
+{
+	specular[0] = r / 255;	 specular[1] = g / 255;  specular[2] = b / 255;
+}
+void Model::setShininessB(GLubyte r, GLubyte g, GLubyte b)
+{
+	shininess[0] = r / 255; shininess[1] = g / 255; shininess[2] = b / 255;
+}
+
 
 
 //Compiles a display list for rendering
@@ -41,14 +57,17 @@ void Model::genarateList()
 {
 	glNewList(listId, GL_COMPILE);
 	glPushMatrix();
-	//glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-	//glColor3f(diffuse[0], diffuse[1], diffuse[2]);
-	//glColorMaterial(GL_FRONT,GL_SPECULAR);
-	//glColor3f(specular[0], specular[1], specular[2]);
-	//glColorMaterial(GL_FRONT, GL_SHININESS);
-	//glColor3f(shininess[0], shininess[1], shininess[2]);
+	glColorMaterial(GL_FRONT, GL_SHININESS);
+	glColor3f(shininess[0], shininess[1], shininess[2]);
+	//glColor3f(.0, 0.0, 1.0);
 
-	
+	glColorMaterial(GL_FRONT,GL_SPECULAR);
+	//glColor3f(.0, 1.0, 0.0);
+	glColor3f(specular[0], specular[1], specular[2]);
+
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	glColor3f(diffuse[0], diffuse[1], diffuse[2]);
+	//glColor3f(1.0,0.0,0.0);
 
 	//glBindTexture(GL_TEXTURE_2D,textureId);
 	glScalef(transform.getScale().x, transform.getScale().y, transform.getScale().z);
