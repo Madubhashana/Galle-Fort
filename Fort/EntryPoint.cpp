@@ -51,7 +51,6 @@ void toggleScene()
 		startMenu->~StartMenu();
 	}
 }
-
 void keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'p')
@@ -62,17 +61,14 @@ void keyboard(unsigned char key, int x, int y)
 
 	currentScene->keyboard(key, x, y);
 }
-
 void mouseMovement(int x, int y)
 {
 	currentScene->mouseMovement(x, y);
 }
-
 void keyboardSpecial(int key, int x, int y)
 {
 	currentScene->keyboardSpecial(key, x, y);
 }
-
 void renderScene(){
 	currentScene->render();
 }
@@ -111,7 +107,7 @@ int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
-	glutInitWindowSize(1280 / 2, 760 / 2);
+	glutInitWindowSize(1280, 760);
 	glutInitWindowPosition(300, 200);
 	glutCreateWindow("Galle Fort");
 
