@@ -2,8 +2,6 @@
 #include "Primitives.h"
 #include "Scene.h"
 
-
-
 class MainScreen : public Scene
 {
 public:
@@ -17,17 +15,17 @@ public:
 	void keyboard(unsigned char key, int x, int y);
 	void mouseMovement(int x, int y);
 	void keyboardSpecial(int key, int x, int y);
+	void Timer(int x);
+
+	void LoadModels();
+	void Waves();
 
 	void initModelsList();
 	void initModels();
 	void initLighting();
 	void init();
 
-	void pointer();
 	void camera(void);
-	void straightRoad(float X, float Z, float length, float width);
-	void turnRoad(float r, float width, float angle);
-	void roads();
 
 private:
 	//Models
@@ -43,6 +41,8 @@ private:
 	Model *entrance;
 	Model *pagoda;
 	Model *library;
+	Model *Museum;
+	Model *Wave01;
 
 	GLfloat moveX = 0.0f;
 	GLfloat moveY = 0.0f;
@@ -55,6 +55,7 @@ private:
 	GLfloat camX = 0.0f;
 	GLfloat camY = 0.0f;
 	GLfloat camZ = 0.0f;
+
 
 	float lastx, lasty; //for the mouse function
 	//float xpos = -6.301640, ypos = 7.4, zpos = -661.658569;    //position 1

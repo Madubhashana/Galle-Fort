@@ -15,7 +15,8 @@ CS 308 | Computer Graphics | Group Project
 GLfloat windowW = 20.0f;
 GLfloat windowH = 20.0f;
 
-bool paused = false;
+bool paused = false;   
+bool mainScreenInit = false;
 
 
 MainScreen* mainScreen;
@@ -49,12 +50,12 @@ void toggleScene()
 			std::cout << "Starting...";
 			mainScreen = new MainScreen();
 			mainScreen->init();
+			mainScreenInit = true;
 		}
 		currentScene = mainScreen;
 		startMenu->~StartMenu();
 	}
 }
-
 void keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'p')
@@ -68,17 +69,14 @@ void keyboard(unsigned char key, int x, int y)
 	}
 	currentScene->keyboard(key, x, y);
 }
-
 void mouseMovement(int x, int y)
 {
 	currentScene->mouseMovement(x, y);
 }
-
 void keyboardSpecial(int key, int x, int y)
 {
 	currentScene->keyboardSpecial(key, x, y);
 }
-
 void renderScene(){
 	currentScene->render();
 }
@@ -107,10 +105,12 @@ void changesize(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 }
 void Timer(int x){
-	if (!paused)
+	if (mainScreenInit)
 	{
+		mainScreen->Timer(x);
 	}
-		//glutPostRedisplay();
+
+	//glutPostRedisplay();
 	glutTimerFunc(60, Timer, 1);
 }
 #pragma endregion
@@ -119,7 +119,7 @@ int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
-	glutInitWindowSize(1280 / 2, 760 / 2);
+	glutInitWindowSize(1280, 760);
 	glutInitWindowPosition(300, 200);
 	glutCreateWindow("Galle Fort");
 
