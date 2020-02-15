@@ -61,6 +61,10 @@ private:
 	//float xpos = -6.301640, ypos = 7.4, zpos = -661.658569;    //position 1
 	//float xpos = -477.89, ypos = 0.0, zpos = -527.83;			//position 2
 	float xpos = 0.0, ypos = 0.0, zpos = 0.0;			//position origin
+
+	float ymax = 50.0f;
+	float ymin = 2.0f;
+
 	float adX, adY, adZ = 0.0;
 
 	//std::vector<Model *> models;
