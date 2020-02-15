@@ -26,8 +26,11 @@ Scene *currentScene;
 
 void init()
 {
-	startMenu->init();
-	currentScene = startMenu;
+	//startMenu->init();
+	//currentScene = startMenu;
+	mainScreen->init();
+	currentScene = mainScreen;
+
 }
 
 void toggleScene()
@@ -56,6 +59,7 @@ void toggleScene()
 		startMenu->~StartMenu();
 	}
 }
+
 void keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'p')
@@ -69,14 +73,18 @@ void keyboard(unsigned char key, int x, int y)
 	}
 	currentScene->keyboard(key, x, y);
 }
+
 void mouseMovement(int x, int y)
 {
 	currentScene->mouseMovement(x, y);
 }
+
 void keyboardSpecial(int key, int x, int y)
 {
 	currentScene->keyboardSpecial(key, x, y);
+
 }
+
 void renderScene(){
 	currentScene->render();
 }
@@ -126,7 +134,6 @@ int main(int argc, char* argv[])
 	init();
 
 	glutDisplayFunc(renderScene);
-	glutIdleFunc(renderScene);
 	glutReshapeFunc(reshape);
 	glutTimerFunc(60.0, Timer, 1);
 
