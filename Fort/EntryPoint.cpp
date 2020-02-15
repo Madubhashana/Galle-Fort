@@ -97,6 +97,18 @@ void changesize(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 }
 void Timer(int x){
+	if (moveX >= 6.0){
+		if (moveY <= -0.3){
+			moveX = 0.0;
+			moveY = 0.0;
+		}
+		else{
+			moveY -= 0.005;
+		}
+	}
+	else{
+		moveX += 0.1;
+	}
 
 	glutPostRedisplay();
 	glutTimerFunc(60, Timer, 1);

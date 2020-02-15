@@ -16,6 +16,7 @@ public:
 	void mouseMovement(int x, int y);
 	void keyboardSpecial(int key, int x, int y);
 	void LoadModels();
+	void Waves();
 
 	void initModelsList();
 	void initModels();
@@ -39,6 +40,7 @@ private:
 	Model *pagoda;
 	Model *library;
 	Model *Museum;
+	Model *Wave01;
 
 	GLfloat moveX = 0.0f;
 	GLfloat moveY = 0.0f;

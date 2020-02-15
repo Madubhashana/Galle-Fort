@@ -20,6 +20,8 @@ void MainScreen::initModelsList()
 	models.insert({ "library", library });
 	models.insert({ "pagoda", pagoda });
 	models.insert({ "Museum", Museum });
+
+	models.insert({ "Wave01", Wave01 });
 }
 void MainScreen::initModels()
 {
@@ -38,6 +40,9 @@ void MainScreen::initModels()
 	library = loader.loadModel("library.obj");
 	pagoda = loader.loadModel("pagoda.obj");
 	Museum = loader.loadModel("Museum.obj");
+
+	Wave01 = loader.loadModel("Wave01.obj");
+
 
 	entrance = loader.loadModel("entrance.obj");
 	entrance->setDiffuse(.5f, .5f, .5f);
@@ -339,6 +344,15 @@ void MainScreen::LoadModels(){
 	glPopMatrix();
 }
 
+void MainScreen::Waves(){
+	//Wave set 01
+	glPushMatrix();
+		glTranslated(0.0+moveX, 0.0, 0.0+moveZ);
+		//glRotated(5, 0.0, 1.0, 0.0);
+		//glScaled(0.033, 0.0328, 0.0329);
+		Wave01->render();
+	glPopMatrix();
+}
 void MainScreen::render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
@@ -360,6 +374,7 @@ void MainScreen::render(){
 		ground_levels();
 		roads();
 		LoadModels();
+		Waves();
 
 	
 	glPopMatrix();
