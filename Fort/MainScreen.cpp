@@ -81,7 +81,7 @@ void MainScreen::initLighting(){
 	glEnable(GL_LIGHT0);
 }
 void MainScreen::init(){
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.1f, 0.15f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glEnable(GL_DEPTH_TEST);
@@ -380,7 +380,23 @@ void MainScreen::render(){
 	glPopMatrix();
 	glutSwapBuffers();
 	glFlush();
-}
+}	  
+
+void MainScreen::Timer(int x)
+{
+	if (moveX >= 6.0){
+		if (moveY <= -0.3){
+			moveX = 0.0;
+			moveY = 0.0;
+		}
+		else{
+			moveY -= 0.005;
+		}
+	}
+	else{
+		moveX += 0.1;
+	}
+}		
 
 void MainScreen::keyDown(unsigned char key){
 

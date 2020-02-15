@@ -15,6 +15,8 @@ public:
 	void keyboard(unsigned char key, int x, int y);
 	void mouseMovement(int x, int y);
 	void keyboardSpecial(int key, int x, int y);
+	void Timer(int x);
+
 	void LoadModels();
 	void Waves();
 
@@ -53,6 +55,7 @@ private:
 	GLfloat camX = 0.0f;
 	GLfloat camY = 0.0f;
 	GLfloat camZ = 0.0f;
+
 
 	float lastx, lasty; //for the mouse function
 	//float xpos = -6.301640, ypos = 7.4, zpos = -661.658569;    //position 1
