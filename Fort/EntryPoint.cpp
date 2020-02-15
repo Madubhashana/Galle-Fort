@@ -26,10 +26,10 @@ Scene *currentScene;
 
 void init()
 {
-	//startMenu->init();
-	//currentScene = startMenu;
-	mainScreen->init();
-	currentScene = mainScreen;
+	startMenu->init();
+	currentScene = startMenu;
+	//mainScreen->init();
+	//currentScene = mainScreen;
 
 }
 
@@ -127,10 +127,19 @@ int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA);
-	glutInitWindowSize(1280, 760);
+	/*glutInitWindowSize(1280, 760);
 	glutInitWindowPosition(300, 200);
-	glutCreateWindow("Galle Fort");
+	glutCreateWindow("Galle Fort");*/
 
+
+	glutGameModeString("800x600:32");
+	if (glutGameModeGet(GLUT_GAME_MODE_POSSIBLE))
+		glutEnterGameMode();
+	else
+	{
+		exit(2);
+	}
+	
 	init();
 
 	glutDisplayFunc(renderScene);
