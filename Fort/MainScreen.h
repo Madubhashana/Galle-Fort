@@ -43,10 +43,14 @@ private:
 	Model *library;
 	Model *Museum;
 	Model *Wave01;
+	Model *Wave02;
 
 	GLfloat moveX = 0.0f;
 	GLfloat moveY = 0.0f;
 	GLfloat moveZ = 3.0f;
+
+	GLfloat moveXInv = 0.0f;
+	GLfloat moveYInv = 0.0f;
 
 	GLfloat rotX = 0.0f;
 	GLfloat rotY = 0.0f;

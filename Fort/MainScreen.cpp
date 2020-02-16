@@ -24,6 +24,7 @@ void MainScreen::initModelsList()
 	models.insert({ "Museum", Museum });
 
 	models.insert({ "Wave01", Wave01 });
+	models.insert({ "Wave02", Wave02 });
 }
 
 void MainScreen::initModels()
@@ -66,6 +67,7 @@ void MainScreen::initModels()
 	Museum = loader.loadModel("Museum.obj");
 
 	Wave01 = loader.loadModel("Wave01.obj");
+	Wave02 = loader.loadModel("Wave02.obj");
 
 
 	entrance = loader.loadModel("entrance.obj");
@@ -227,32 +229,32 @@ void MainScreen::keyboard(unsigned char key, int x, int y) {
 	{
 		float yrotrad;
 		yrotrad = (rotY / 180 * PI);
-		xpos += float(cos(yrotrad)) * 0.2;
-		zpos += float(sin(yrotrad)) * 0.2;
+		xpos += float(cos(yrotrad)) * 0.4;
+		zpos += float(sin(yrotrad)) * 0.4;
 	}
 
 	if (key == '4')
 	{
 		float yrotrad;
 		yrotrad = (rotY / 180 * PI);
-		xpos -= float(cos(yrotrad)) * 0.2;
-		zpos -= float(sin(yrotrad)) * 0.2;
+		xpos -= float(cos(yrotrad)) * 0.4;
+		zpos -= float(sin(yrotrad)) * 0.4;
 	}
 
 	if (key == '2')
 	{
 		float xrotrad;
 		xrotrad = (rotX / 180 * PI);
-		ypos -= float(cos(xrotrad)) * 0.2;
-		xpos -= float(sin(xrotrad)) * 0.2;
+		ypos -= float(cos(xrotrad)) * 0.4;
+		xpos -= float(sin(xrotrad)) * 0.4;
 	}
 
 	if (key == '8')
 	{
 		float xrotrad;
 		xrotrad = (rotX / 180 * PI);
-		ypos += float(cos(xrotrad)) * 0.2;
-		xpos += float(sin(xrotrad)) * 0.2;
+		ypos += float(cos(xrotrad)) * 0.4;
+		xpos += float(sin(xrotrad)) * 0.4;
 	}
 	if (key == 'd')
 	{
@@ -407,7 +409,7 @@ void MainScreen::LoadModels(){
 
 	//Pagoda
 	glPushMatrix();
-	glTranslated(19.0, 1.8, -80.6);
+	glTranslated(18.0, 0.0, -80.6);
 	glRotated(0.8, 0.0, 0.0, 1.0);
 	glScaled(6.0, 6.0, 6.0);
 	pagoda->draw();
@@ -425,10 +427,112 @@ void MainScreen::LoadModels(){
 void MainScreen::Waves(){
 	//Wave set 01
 	glPushMatrix();
-	glTranslated(0.0 + moveX, 0.0, 0.0 + moveZ);
-	//glRotated(5, 0.0, 1.0, 0.0);
-	//glScaled(0.033, 0.0328, 0.0329);
-	Wave01->render();
+		glTranslated(-52.6 + moveX, -1.0+moveY, -24.6);
+		glPushMatrix();
+			glTranslated(0.0, 0.0, 0.0);
+			glRotated(5, 0.0, 1.0, 0.0);
+			glScaled(22.5, 22.0, 28.8);
+			Wave02->draw();
+
+			glTranslated(-0.2, 0.0, 0.7);
+			glScaled(0.8, 0.8, 0.7);
+			Wave01->draw();
+
+			glTranslated(-0.4, 0.0, -1.9);
+			Wave01->draw();
+		glPopMatrix();
+	glPopMatrix();
+
+	//Wave set 02
+	glPushMatrix();
+		glTranslated(-116.8 + moveX, -1.0 + moveY, -93.4);
+		glPushMatrix();
+			glTranslated(0.0, 0.0, 0.0);
+			glRotated(4.2, 0.0, -1.0, 0.0);
+			glScaled(22.5, 22.0, 28.8);
+			Wave02->draw();
+
+			glTranslated(-0.2, 0.0, 0.7);
+			glScaled(0.8, 0.8, 0.7);
+			Wave01->draw();
+
+			glTranslated(-0.4, 0.0, -1.9);
+			Wave01->draw();
+		glPopMatrix();
+	glPopMatrix();
+
+	//Wave set 03
+	glPushMatrix();
+		glTranslated(-106.5 + moveX, -1.0 + moveY, -160);
+			glPushMatrix();
+			glTranslated(0.0, 0.0, 0.0);
+			glRotated(34.2, 0.0, -1.0, 0.0);
+			glScaled(22.5, 22.0, 28.8);
+			Wave02->draw();
+
+			glTranslated(-0.2, 0.0, 0.7);
+			glScaled(0.8, 0.8, 0.7);
+			Wave01->draw();
+
+			glTranslated(-0.4, 0.0, -1.9);
+			Wave01->draw();
+		glPopMatrix();
+	glPopMatrix();
+
+
+	//Wave set 04
+	glPushMatrix();
+		glTranslated(76.4+ moveXInv, -1.0 + moveYInv, -34.6);
+		glPushMatrix();
+			glTranslated(0.0, 0.0, 0.0);
+			glRotated(176.6, 0.0, 1.0, 0.0);
+			glScaled(22.5, 22.0, 28.8);
+			Wave02->draw();
+
+			glTranslated(-0.2, 0.0, 0.7);
+			glScaled(0.8, 0.8, 0.7);
+			Wave01->draw();
+
+			glTranslated(-0.4, 0.0, -1.9);
+			Wave01->draw();
+		glPopMatrix();
+	glPopMatrix();
+
+
+	//Wave set 05
+	glPushMatrix();
+		glTranslated(50.4 + moveXInv, -1.0 + moveYInv, -111.4);
+		glPushMatrix();
+			glTranslated(0.0, 0.0, 0.0);
+			glRotated(217.5, 0.0, 1.0, 0.0);
+			glScaled(22.5, 22.0, 28.8);
+			Wave02->draw();
+
+			glTranslated(-0.2, 0.0, 0.7);
+			glScaled(0.8, 0.8, 0.7);
+			Wave01->draw();
+
+			glTranslated(-0.4, 0.0, -1.9);
+			Wave01->draw();
+		glPopMatrix();
+	glPopMatrix();
+
+	//Wave set 05
+	glPushMatrix();
+		glTranslated(1.8 + moveXInv, -1.0 + moveYInv, -150);
+		glPushMatrix();
+			glTranslated(0.0, 0.0, 0.0);
+			glRotated(213.5, 0.0, 1.0, 0.0);
+			glScaled(22.5, 22.0, 28.8);
+			Wave02->draw();
+
+			glTranslated(-0.2, 0.0, 0.7);
+			glScaled(0.8, 0.8, 0.7);
+			Wave01->draw();
+
+			glTranslated(-0.4, 0.0, -1.9);
+			Wave01->draw();
+			glPopMatrix();
 	glPopMatrix();
 }
 void MainScreen::render(){
@@ -462,7 +566,7 @@ void MainScreen::render(){
 
 void MainScreen::Timer(int x)
 {
-	if (moveX >= 6.0){
+	if (moveX >= 20.0){
 		if (moveY <= -0.3){
 			moveX = 0.0;
 			moveY = 0.0;
@@ -474,6 +578,21 @@ void MainScreen::Timer(int x)
 	else{
 		moveX += 0.1;
 	}
+
+
+	if (moveXInv <= -20.0){
+		if (moveYInv <= -0.3){
+			moveXInv = 0.0;
+			moveYInv = 0.0;
+		}
+		else{
+			moveYInv -= 0.005;
+		}
+	}
+	else{
+		moveXInv -= 0.1;
+	}
+	glutPostRedisplay();
 }
 
 void MainScreen::keyDown(unsigned char key){
