@@ -18,6 +18,7 @@ public:
 	void Timer(int x);
 
 	void LoadModels();
+	void Trees();
 	void Waves();
 
 	void initModelsList();
@@ -31,6 +32,7 @@ private:
 	//Models
 	Model *testModel;
 	Model *church;
+	Model *Church2;
 	Model *clockTower;
 	Model *directionSign;
 	Model *dutchHospital;
@@ -44,6 +46,11 @@ private:
 	Model *Museum;
 	Model *Wave01;
 	Model *Wave02;
+	Model *Normal;
+	Model *U_shape;
+	Model *Turn_shape;
+	Model *L_shape;
+	Model *Tree;
 
 	GLfloat moveX = 0.0f;
 	GLfloat moveY = 0.0f;
@@ -61,12 +68,10 @@ private:
 	GLfloat camZ = 0.0f;
 
 
-	float lastx, lasty; //for the mouse function
-	//float xpos = -6.301640, ypos = 7.4, zpos = -661.658569;    //position 1
-	//float xpos = -477.89, ypos = 0.0, zpos = -527.83;			//position 2
+	float lastx, lasty; 
 	float xpos = 0.0, ypos = 0.0, zpos = 0.0;			//position origin
 
-	float ymax = 50.0f;
+	float ymax = 200.0f;
 	float ymin = 2.0f;
 
 	float adX, adY, adZ = 0.0;

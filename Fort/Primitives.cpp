@@ -88,7 +88,7 @@ void roads(){
 
 	//RB-2
 	glPushMatrix();
-	glTranslated(-1.4, 0.0, -27.6);
+	glTranslated(-1.4, 0.001, -27.6);
 	turnRoad(0.0, 3, 360);
 	glPopMatrix();
 

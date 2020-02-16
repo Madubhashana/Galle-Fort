@@ -98,20 +98,7 @@ void reshape(int w, int h){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
-void changesize(GLsizei w, GLsizei h) {
-	glViewport(0, 0, w, h);
-	GLfloat aspect_ratio = h == 0 ? w / 1 : (GLfloat)w / (GLfloat)h;
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
 
-	if (w <= h)
-		glOrtho(-windowW, windowW, -windowH / aspect_ratio, windowH / aspect_ratio, 20.0, -20.0);
-	else
-		glOrtho(-windowW * aspect_ratio, windowW*aspect_ratio, -windowH, windowH, 20.0, -20.0);
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-}
 void Timer(int x){
 	if (mainScreenInit)
 	{
